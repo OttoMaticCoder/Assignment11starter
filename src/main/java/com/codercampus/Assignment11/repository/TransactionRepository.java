@@ -45,7 +45,16 @@ public class TransactionRepository {
 			this.transactions = (List<Transaction>) objectInputStream.readObject();
 		} catch (IOException | ClassNotFoundException e) {
 			e.printStackTrace();
-		} 
+		}
 		
+	}
+
+	public Transaction findById(Integer transactionId) {
+		for (Transaction transaction : transactions) {
+			if (transaction.getId().equals(transactionId.longValue())) {
+				return transaction;
+			}
+		}
+				return null;
 	}
 }
